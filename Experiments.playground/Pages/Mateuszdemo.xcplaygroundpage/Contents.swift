@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 struct Logger {
     var log: (String) -> String
@@ -28,4 +28,4 @@ struct System {
 
 let system: System = .init(logger: .impl())
 
-print(system.createLog(message: "Mateusz Bednarz"))
+print(system.createLog(message: "Mateusz"))

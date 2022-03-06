@@ -6,6 +6,20 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		50A3C01427D545BC0048D86C /* Formatter */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 50A3C01527D545BC0048D86C /* Build configuration list for PBXAggregateTarget "Formatter" */;
+			buildPhases = (
+				50A3C01827D545C40048D86C /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Formatter;
+			productName = Formatter;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		507D856027D40ACD009F83DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D855F27D40ACD009F83DE /* AppDelegate.swift */; };
 		507D856227D40ACD009F83DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507D856127D40ACD009F83DE /* SceneDelegate.swift */; };
@@ -24,6 +38,7 @@
 		507D856B27D40ACF009F83DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		507D856D27D40ACF009F83DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50A3C00C27D539190048D86C /* UI */ = {isa = PBXFileReference; lastKnownFileType = text; path = UI; sourceTree = SOURCE_ROOT; };
+		50A3C01927D5479B0048D86C /* Experiments.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Experiments.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +56,7 @@
 		507D855327D40ACD009F83DE = {
 			isa = PBXGroup;
 			children = (
+				50A3C01927D5479B0048D86C /* Experiments.playground */,
 				507D855E27D40ACD009F83DE /* TheMostRandomThingEverDone */,
 				507D855D27D40ACD009F83DE /* Products */,
 				50A3C00F27D53A9E0048D86C /* Frameworks */,
@@ -86,6 +102,7 @@
 				507D855827D40ACD009F83DE /* Sources */,
 				507D855927D40ACD009F83DE /* Frameworks */,
 				507D855A27D40ACD009F83DE /* Resources */,
+				50A3C01327D542C10048D86C /* Linter */,
 			);
 			buildRules = (
 			);
@@ -112,6 +129,9 @@
 					507D855B27D40ACD009F83DE = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					50A3C01427D545BC0048D86C = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 				};
 			};
 			buildConfigurationList = 507D855727D40ACD009F83DE /* Build configuration list for PBXProject "TheMostRandomThingEverDone" */;
@@ -128,6 +148,7 @@
 			projectRoot = "";
 			targets = (
 				507D855B27D40ACD009F83DE /* TheMostRandomThingEverDone */,
+				50A3C01427D545BC0048D86C /* Formatter */,
 			);
 		};
 /* End PBXProject section */
@@ -143,6 +164,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50A3C01327D542C10048D86C /* Linter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linter;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/xcrun --sdk macosx swift run --configuration release --package-path ./Formatter --build-path ./.formatterCache -- swift-format lint --configuration ./Formatter/formatterConfig.json --parallel --recursive ./UI/Sources\n";
+		};
+		50A3C01827D545C40048D86C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/xcrun --sdk macosx swift run --configuration release --package-path ./Formatter --build-path ./.formatterCache -- swift-format format --in-place --configuration ./Formatter/formatterConfig.json --parallel --recursive ./UI/Sources\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		507D855827D40ACD009F83DE /* Sources */ = {
@@ -341,6 +400,24 @@
 			};
 			name = Release;
 		};
+		50A3C01627D545BC0048D86C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95WZQ373WM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		50A3C01727D545BC0048D86C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95WZQ373WM;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -358,6 +435,15 @@
 			buildConfigurations = (
 				507D857127D40ACF009F83DE /* Debug */,
 				507D857227D40ACF009F83DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50A3C01527D545BC0048D86C /* Build configuration list for PBXAggregateTarget "Formatter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50A3C01627D545BC0048D86C /* Debug */,
+				50A3C01727D545BC0048D86C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
